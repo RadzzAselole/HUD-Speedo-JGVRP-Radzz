@@ -3,51 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neon Speedometer HUD</title>
+    <title>Speedometer Testing</title>
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <main class="speedometer-neon">
-        
-        <div class="gauge-ring">
-            
-            <div class="gauge-center">
-                
-                <div class="speed-display">
-                    <span id="speed" class="speed-number">0</span>
-                    <span class="speed-unit">KMH</span>
-                </div>
-                
-                <div class="rpm-display">
-                    <span id="rpm">0.00</span> RPM
-                </div>
-                
-                <div class="vitals-row">
-                    <div class="vital-item">
-                        <span class="icon">⛽</span>
-                        <span id="fuel">100%</span>
-                    </div>
-                    <div class="vital-item">
-                        <span class="icon">⚙️</span>
-                        <span id="gear">N</span>
-                    </div>
-                    <div class="vital-item">
-                        <span class="icon">🔧</span>
-                        <span id="health">100%</span>
-                    </div>
-                </div>
+<main class="hud-dashboard">
+    
+    <div class="top-row">
+        <div class="hud-box small-box">
+            <span class="value digital-font" id="rpm">0000</span>
+            <span class="label">RPM</span>
+        </div>
+        <div class="hud-box rpm-bar">
+            <span class="label">RPM</span>
+        </div>
+    </div>
 
-                <div style="display:none;">
-                    <span id="engine"></span>
-                    <span id="headlights"></span>
-                    <span id="indicators"></span>
-                    <span id="seatbelts"></span>
-                    <span id="odometer"></span>
-                </div>
+    <div class="middle-row">
+        <div class="hud-box speed-box">
+            <div class="speed-numbers" id="speed-digits-container">
+                <span class="digit">0</span>
+                <span class="digit">0</span>
+                <span class="digit">0</span>
+            </div>
+                <span class="label-large" id="speed-unit">KMH</span>
+        </div>
 
+        <div class="right-column">
+            <div class="hud-box small-box">
+                <span class="label">GEAR</span>
+                <span class="value" id="gear">&nbsp;</span>
+            </div>
+            <div class="hud-box small-box">
+                <span class="label">HEALTH</span>
+                <span class="value" id="health">&nbsp;</span>
+            </div>
+            <div class="hud-box small-box">
+                <span class="value" id="fuel">&nbsp;</span>
+                <span class="label">FUEL LEVEL</span>
             </div>
         </div>
-    </main>
+    </div>
+
+    <div class="hud-box bottom-indicators">
+        <div class="icon-circle" id="indicator-left">⬅️</div>
+        <div class="icon-circle" id="engine">⚙️</div>
+        <div class="icon-circle" id="headlights">☀️</div>
+        <div class="icon-circle" id="seatbelts">🧍</div>
+        <div class="icon-circle" id="indicator-right">➡️</div>
+    </div>
+</main>
     <script src="/script.js"></script>
 </body>
 </html>
