@@ -88,7 +88,7 @@ function setGear(gear) {
  */
 function updateGearDisplay() {
     if (currentGear === 0) {
-        if (currentRawSpeed > 0.5) {
+        if (currentRawSpeed > 1) {
             elements.gear.innerText = 'R';
         } else {
             elements.gear.innerText = 'N';
