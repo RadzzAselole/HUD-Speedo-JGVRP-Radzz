@@ -24,13 +24,13 @@ function setSpeed(speed) {
 
     switch(speedMode)
     {
-        case 1: speedValue = `${Math.round(speed * 2.236936)} MPH`; unitText = 'MPH'; break; // MPH
-        case 2: speedValue = `${Math.round(speed * 1.943844)} Knots`; unitText = 'Knots'; break; // Knots
-        default: speedValue = `${Math.round(speed * 3.6)} KMH`; unitText = 'KMH'; // KMH
+        case 1: speedValue = `${Math.round(speed * 2.236936)}`; unitText = 'MPH'; break; // MPH
+        case 2: speedValue = `${Math.round(speed * 1.943844)}`; unitText = 'Knots'; break; // Knots
+        default: speedValue = `${Math.round(speed * 3.6)}`; unitText = 'KMH'; // KMH
     }
-    if (speedValue > 999) speedValue = 999;
+    if (speedValue > 999) speedValue = '999';  
 
-    let speedString = String(speedValue). padStart(3, '0');
+    let speedString = String(speedValue).padStart(3, '0');
 
     if (elements.speedDigits.length === 3) {
         elements.speedDigits[0].innerText = speedString[0];
@@ -71,7 +71,13 @@ function setHealth(health) {
  * @param {number} gear - The current gear to display. 0 represents neutral/reverse.
  */
 function setGear(gear) {
-    elements.gear.innerText = String(gear);
+    if (gear === -1) {
+        elements.gear.innerText = 'R';
+    } else if (gear === 0) {
+        elements.gear.innerText = 'N';
+    } else {
+        elements.gear.innerText = String(gear);
+    }
 }
 
 /**
@@ -137,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         speedDigits: document.querySelectorAll('#speed-digits-container .digit'),
         speedUnit: document.getElementById('speed-unit'),
-        
+
         rpm: document.getElementById('rpm'),
         fuel: document.getElementById('fuel'),
         health: document.getElementById('health'),
