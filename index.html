@@ -3,62 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Speedometer HUD</title>
+    <title>Neon Speedometer HUD</title>
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <main class="speedometer-custom">
-        <!-- Primary Driving Focus -->
-        <section class="primary-cluster">
-            <div class="stat-box highlight">
-                <div class="stat-value" id="speed">0 KMH</div>
-                <div class="stat-label">SPEED</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-value" id="rpm">0.0000 RPM</div>
-                <div class="stat-label">RPM</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-value" id="gear">N</div>
-                <div class="stat-label">GEAR</div>
-            </div>
-        </section>
+    <main class="speedometer-neon">
+        
+        <div class="gauge-ring">
+            
+            <div class="gauge-center">
+                
+                <div class="speed-display">
+                    <span id="speed" class="speed-number">0</span>
+                    <span class="speed-unit">KMH</span>
+                </div>
+                
+                <div class="rpm-display">
+                    <span id="rpm">0.00</span> RPM
+                </div>
+                
+                <div class="vitals-row">
+                    <div class="vital-item">
+                        <span class="icon">⛽</span>
+                        <span id="fuel">100%</span>
+                    </div>
+                    <div class="vital-item">
+                        <span class="icon">⚙️</span>
+                        <span id="gear">N</span>
+                    </div>
+                    <div class="vital-item">
+                        <span class="icon">🔧</span>
+                        <span id="health">100%</span>
+                    </div>
+                </div>
 
-        <!-- Secondary Vehicle Vitals -->
-        <section class="vitals-cluster">
-            <div class="vital-row">
-                <span class="vital-label">FUEL</span>
-                <span class="vital-value" id="fuel">100%</span>
-            </div>
-            <div class="vital-row">
-                <span class="vital-label">HEALTH</span>
-                <span class="vital-value" id="health">100%</span>
-            </div>
-            <div class="vital-row">
-                <span class="vital-label">ENGINE</span>
-                <span class="vital-value" id="engine">Off</span>
-            </div>
-            <div class="vital-row">
-                <span class="vital-label">ODO</span>
-                <span class="vital-value" id="odometer">0.0 Miles</span>
-            </div>
-        </section>
+                <div style="display:none;">
+                    <span id="engine"></span>
+                    <span id="headlights"></span>
+                    <span id="indicators"></span>
+                    <span id="seatbelts"></span>
+                    <span id="odometer"></span>
+                </div>
 
-        <!-- Toggles & Indicators -->
-        <section class="toggles-cluster">
-            <div class="toggle-item">
-                <span class="toggle-label">LGT</span>
-                <span class="toggle-value" id="headlights">Off</span>
             </div>
-            <div class="toggle-item">
-                <span class="toggle-label">IND</span>
-                <span class="toggle-value" id="indicators">Off / Off</span>
-            </div>
-            <div class="toggle-item">
-                <span class="toggle-label">BELT</span>
-                <span class="toggle-value" id="seatbelts">Off</span>
-            </div>
-        </section>
+        </div>
     </main>
     <script src="/script.js"></script>
 </body>
