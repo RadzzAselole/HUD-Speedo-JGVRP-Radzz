@@ -28,7 +28,7 @@ function setSpeed(speed) {
         case 2: speedValue = `${Math.round(speed * 1.943844)} Knots`; unitText = 'Knots'; break; // Knots
         default: speedValue = `${Math.round(speed * 3.6)} KMH`; unitText = 'KMH'; // KMH
     }
-    if (speedValue > 999) speedValue = '999';
+    if (speedValue > 999) speedValue = 999;
 
     let speedString = String(speedValue).padStart(3, '0');
 
