@@ -99,6 +99,22 @@ function updateGearDisplay() {
 }
 
 /**
+ * Updates the vehicle door lock status display.
+ */
+function setLock(state) {
+    let isLocked = (state == 2 || state === true);
+
+    let iconElement = elements.lock.querySelector('i');
+    if (iconElement) {
+        iconElement.className = 'fa-lock';
+        elements.lock.classList.add('active-red');
+    } else {
+        iconElement.className = 'fa-unlock';
+        elements.lock.classList.remove('active-yellow');
+    }
+}
+
+/**
  * Updates the headlights status display.
  * @param {number} state - The headlight state (0: Off, 1: On, 2: High Beam).
  */
