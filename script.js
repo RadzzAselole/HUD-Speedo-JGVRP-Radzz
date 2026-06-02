@@ -25,10 +25,3 @@ function updateVehicleHUD(speed, rpm, fuel) {
  * jika file sudah dimasukkan ke dalam folder resource game. 
  * Ini hanya untuk melihat efek animasinya saat kamu buka index.html di Google Chrome.
  */
-setInterval(() => {
-    let dummySpeed = Math.floor(Math.random() * 120); // Angka acak 0-120
-    let dummyRPM = Math.floor(Math.random() * 10000); // Angka acak 0-10000
-    let dummyFuel = 65; // Bensin statis di 65%
-    
-    updateVehicleHUD(dummySpeed, dummyRPM, dummyFuel);
-}, 200); // Di-refresh setiap 200 milidetik
