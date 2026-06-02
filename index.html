@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JGVRP Futuristic HUD</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Mengambil font futuristik dari Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="hud-container">
+        <!-- Bagian Speedometer -->
+        <div class="speed-section">
+            <div class="speed-value" id="speed">0</div>
+            <div class="speed-label">MPH</div>
+        </div>
+
+        <!-- Bagian Indikator (RPM & Bensin) -->
+        <div class="bars-section">
+            <div class="bar-row">
+                <span class="label">RPM</span>
+                <div class="bar-bg">
+                    <div class="bar-fill rpm-fill" id="rpm-bar"></div>
+                </div>
+            </div>
+            
+            <div class="bar-row">
+                <span class="label">FUEL</span>
+                <div class="bar-bg">
+                    <div class="bar-fill fuel-fill" id="fuel-bar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
