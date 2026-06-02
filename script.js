@@ -1,6 +1,7 @@
 let elements = {};
 let speedMode = 0;
 let indicators = 0;
+let currentRawSpeed = 0;
 
 const onOrOff = state => state ? 'On' : 'Off';
 
@@ -20,6 +21,8 @@ function setEngine(state) {
  * @description Converts the speed value to the current speed mode and updates the display.
  */
 function setSpeed(speed) {
+    currentRawSpeed = speed;
+
     let speedValue, unitText;
 
     switch(speedMode)
@@ -71,10 +74,13 @@ function setHealth(health) {
  * @param {number} gear - The current gear to display. 0 represents neutral/reverse.
  */
 function setGear(gear) {
-    if (gear === -1 || gear === 'R or Reverse') {
+    if (gear == 0) {
+
+        if (currentRawSpeed > 0.5) {
         elements.gear.innerText = 'R';
-    } else if (gear === 0) {
+    } else {
         elements.gear.innerText = 'N';
+    }
     } else {
         elements.gear.innerText = String(gear);
     }
