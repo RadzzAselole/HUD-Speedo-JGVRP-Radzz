@@ -1,0 +1,114 @@
+* {
+    user-select: none;
+    user-drag: none;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: transparent !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.speedometer-custom {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 280px;
+    
+    /* Modern dark glass effect */
+    background: linear-gradient(135deg, rgba(15, 15, 15, 0.95), rgba(30, 30, 30, 0.85));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    color: #ffffff;
+    padding: 15px;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* --- Primary Cluster (Speed, RPM, Gear) --- */
+.primary-cluster {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+}
+
+.stat-box {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 14pt;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.stat-label {
+    font-size: 8pt;
+    color: #888;
+    margin-top: 4px;
+    font-weight: 600;
+}
+
+/* Accent for the Speed to make it pop */
+.highlight .stat-value {
+    color: #00ffcc; 
+    font-size: 18pt;
+}
+
+/* --- Secondary Vitals (Fuel, Health, Engine, Odometer) --- */
+.vitals-cluster {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.vital-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10pt;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+.vital-label {
+    color: #aaa;
+    font-weight: 600;
+}
+
+.vital-value {
+    font-weight: bold;
+}
+
+/* --- Toggles & Indicators --- */
+.toggles-cluster {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9pt;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.toggle-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.toggle-label {
+    color: #777;
+    font-weight: bold;
+}
+
+.toggle-value {
+    color: #ddd;
+}

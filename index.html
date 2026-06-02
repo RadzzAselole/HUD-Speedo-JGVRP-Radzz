@@ -3,38 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JGVRP Futuristic HUD</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Mengambil font futuristik dari Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <title>Custom Speedometer HUD</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-
-    <div class="hud-container">
-        <!-- Bagian Speedometer -->
-        <div class="speed-section">
-            <div class="speed-value" id="speed">0</div>
-            <div class="speed-label">MPH</div>
-        </div>
-
-        <!-- Bagian Indikator (RPM & Bensin) -->
-        <div class="bars-section">
-            <div class="bar-row">
-                <span class="label">RPM</span>
-                <div class="bar-bg">
-                    <div class="bar-fill rpm-fill" id="rpm-bar"></div>
-                </div>
+    <main class="speedometer-custom">
+        <!-- Primary Driving Focus -->
+        <section class="primary-cluster">
+            <div class="stat-box highlight">
+                <div class="stat-value" id="speed">0 KMH</div>
+                <div class="stat-label">SPEED</div>
             </div>
-            
-            <div class="bar-row">
-                <span class="label">FUEL</span>
-                <div class="bar-bg">
-                    <div class="bar-fill fuel-fill" id="fuel-bar"></div>
-                </div>
+            <div class="stat-box">
+                <div class="stat-value" id="rpm">0.0000 RPM</div>
+                <div class="stat-label">RPM</div>
             </div>
-        </div>
-    </div>
+            <div class="stat-box">
+                <div class="stat-value" id="gear">N</div>
+                <div class="stat-label">GEAR</div>
+            </div>
+        </section>
 
-    <script src="script.js"></script>
+        <!-- Secondary Vehicle Vitals -->
+        <section class="vitals-cluster">
+            <div class="vital-row">
+                <span class="vital-label">FUEL</span>
+                <span class="vital-value" id="fuel">100%</span>
+            </div>
+            <div class="vital-row">
+                <span class="vital-label">HEALTH</span>
+                <span class="vital-value" id="health">100%</span>
+            </div>
+            <div class="vital-row">
+                <span class="vital-label">ENGINE</span>
+                <span class="vital-value" id="engine">Off</span>
+            </div>
+            <div class="vital-row">
+                <span class="vital-label">ODO</span>
+                <span class="vital-value" id="odometer">0.0 Miles</span>
+            </div>
+        </section>
+
+        <!-- Toggles & Indicators -->
+        <section class="toggles-cluster">
+            <div class="toggle-item">
+                <span class="toggle-label">LGT</span>
+                <span class="toggle-value" id="headlights">Off</span>
+            </div>
+            <div class="toggle-item">
+                <span class="toggle-label">IND</span>
+                <span class="toggle-value" id="indicators">Off / Off</span>
+            </div>
+            <div class="toggle-item">
+                <span class="toggle-label">BELT</span>
+                <span class="toggle-value" id="seatbelts">Off</span>
+            </div>
+        </section>
+    </main>
+    <script src="/script.js"></script>
 </body>
 </html>
