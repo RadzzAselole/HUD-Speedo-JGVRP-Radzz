@@ -30,7 +30,7 @@ function setSpeed(speed) {
     }
     if (speedValue > 999) speedValue = 999;
 
-    let speedString = String(speedValue).padStart(3, '0');
+    let speedString = String(speedValue). padStart(3, '0');
 
     if (elements.speedDigits.length === 3) {
         elements.speedDigits[0].innerText = speedString[0];
