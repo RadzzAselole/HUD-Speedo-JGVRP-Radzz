@@ -1,5 +1,5 @@
 let elements = {};
-let speedMode = 1;
+let speedMode = 0;
 let indicators = 0;
 
 const onOrOff = state => state ? 'On' : 'Off';
@@ -11,7 +11,7 @@ const onOrOff = state => state ? 'On' : 'Off';
  * @description Sets the engine state display based on the provided boolean state.
  */
 function setEngine(state) {
-    elements.engine.innerText = onOrOff(state);
+    elements.engine.classList.toggle('active-yellow', state);
 }
 
 /**
@@ -20,12 +20,26 @@ function setEngine(state) {
  * @description Converts the speed value to the current speed mode and updates the display.
  */
 function setSpeed(speed) {
+    let speedValue, unitText;
+
     switch(speedMode)
     {
-        case 1: speed = elements.speed.innerText = `${Math.round(speed * 2.236936)} MPH`; break; // MPH
-        case 2: speed = elements.speed.innerText = `${Math.round(speed * 1.943844)} Knots`; break; // Knots
-        default: speed = elements.speed.innerText = `${Math.round(speed * 3.6)} KMH`; // KMH
+        case 1: speedValue = `${Math.round(speed * 2.236936)} MPH`; unitText = 'MPH'; break; // MPH
+        case 2: speedValue = `${Math.round(speed * 1.943844)} Knots`; unitText = 'Knots'; break; // Knots
+        default: speedValue = `${Math.round(speed * 3.6)} KMH`; unitText = 'KMH'; // KMH
     }
+    if (speedValue > 999) speedValue = '999';
+
+    let speedString = String(speedValue).padStart(3, '0');
+
+    if (elements.speedDigits.length === 3) {
+        elements.speedDigits[0].innerText = speedString[0];
+        elements.speedDigits[1].innerText = speedString[1];
+        elements.speedDigits[2].innerText = speedString[2];
+    }
+
+    elements.speed.innerText = speedValue;
+    elements.speedUnit.innerText = unitText;
 }
 
 /**
@@ -33,7 +47,7 @@ function setSpeed(speed) {
  * @param {number} rpm - The RPM value to display. (0 to 1).
  */
 function setRPM(rpm) {
-    elements.rpm.innerText = `${rpm.toFixed(4)} RPM`;
+    elements.rpm.innerText = Math.round(rpm * 10000)    ;
 }
 
 /**
@@ -41,7 +55,7 @@ function setRPM(rpm) {
  * @param {number} fuel - The fuel level (0 to 1).
  */
 function setFuel(fuel) {
-    elements.fuel.innerText = `${(fuel * 100).toFixed(1)}%`;
+    elements.fuel.innerText = `${Math.round(fuel * 100)}%`;
 }
 
 /**
@@ -49,7 +63,7 @@ function setFuel(fuel) {
  * @param {number} health - The vehicle health level (0 to 1).
  */
 function setHealth(health) {
-    elements.health.innerText = `${(health * 100).toFixed(1)}%`;
+    elements.health.innerText = `${Math.round(health * 100)}%`;
 }
 
 /**
@@ -67,9 +81,9 @@ function setGear(gear) {
 function setHeadlights(state) {
     switch(state)
     {
-        case 1: elements.headlights.innerText = 'On'; break;
-        case 2: elements.headlights.innerText = 'High Beam'; break;
-        default: elements.headlights.innerText = 'Off';
+        case 1: elements.headlights.classList.toggle('active-yellow', true); break;
+        case 2: elements.headlights.classList.toggle('active-blue', true); break;
+        default: elements.headlights.classList.remove('active-yellow', 'active-blue');
     }
 }
 
@@ -79,7 +93,7 @@ function setHeadlights(state) {
  */
 function setLeftIndicator(state) {
     indicators = (indicators & 0b10) | (state ? 0b01 : 0b00);
-    elements.indicators.innerText = `${indicators & 0b01 ? 'On' : 'Off'} / ${indicators & 0b10 ? 'On' : 'Off'}`;
+    elements.indicators.classList.toggle('active-yellow', indicators & 0b01);
 }
 
 /**
@@ -88,7 +102,7 @@ function setLeftIndicator(state) {
  */
 function setRightIndicator(state) {
     indicators = (indicators & 0b01) | (state ? 0b10 : 0b00);
-    elements.indicators.innerText = `${indicators & 0b01 ? 'On' : 'Off'} / ${indicators & 0b10 ? 'On' : 'Off'}`;
+    elements.indicators.classList.toggle('active-yellow', indicators & 0b10);
 }
 
 /**
@@ -96,7 +110,7 @@ function setRightIndicator(state) {
  * @param {boolean} state - If true, indicates seatbelts are fastened; otherwise, indicates they are not.
  */
 function setSeatbelts(state) {
-    elements.seatbelts.innerText = onOrOff(state);
+    elements.seatbelts.classList.toggle('active-yellow', state);
 }
 
 /**
@@ -120,13 +134,16 @@ function setOdometer(distance)
 document.addEventListener('DOMContentLoaded', () => {
     elements = {
         engine: document.getElementById('engine'),
-        speed: document.getElementById('speed'),
+
+        speedDigits: document.querySelectorAll('#speed-digits-container .digit'),
+        speedUnit: document.getElementById('speed-unit'),
+        
         rpm: document.getElementById('rpm'),
         fuel: document.getElementById('fuel'),
         health: document.getElementById('health'),
         gear: document.getElementById('gear'),
         headlights: document.getElementById('headlights'),
-        indicators: document.getElementById('indicators'),
+        indicators: document.getElementById('indicators'), // Assuming both indicators share the same element for simplicity
         seatbelts: document.getElementById('seatbelts'),
         odometer: document.getElementById('odometer'),
     };
